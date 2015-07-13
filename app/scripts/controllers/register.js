@@ -9,8 +9,8 @@
 
     this.register = function(formData) {
       $http.post('http://localhost:3000/auth/register', formData).
-      success(function(data, status, headers, config) {
-        console.log('success');
+      success(function(data) {
+        console.log(data);
       }).
       error(function(data, status, headers, config) {
         console.log(headers);

@@ -38,8 +38,10 @@
             <ul class="nav navbar-nav" ng-controller="NavbarCtrl as navCtrl">
               <li ng-class="{active: navCtrl.isActive('/')}"><a href="#/">Home</a></li>
               <li ng-class="{active: navCtrl.isActive('/about')}"><a ng-href="#/about">About</a></li>
-              <li ng-class="{active: navCtrl.isActive('/login')}"><a ng-href="#/login">Login</a></li>
-              <li ng-class="{active: navCtrl.isActive('/register')}"><a  ng-href="#/register">Register</a></li>
+              <li ng-show="!currentUser" ng-class="{active: navCtrl.isActive('/login')}"><a ng-href="#/login">Login</a></li>
+              <li ng-show="!currentUser" ng-class="{active: navCtrl.isActive('/register')}"><a  ng-href="#/register">Register</a></li>
+              <li ng-show="currentUser"><a ng-href="#/register" ng-click="navCtrl.logout()">Logout</a></li>
+              <li ng-show="currentUser"><a href="#"> Logged in as : {{currentUser.username}}</a></li>
             </ul>
           </div>
         </div>
@@ -88,6 +90,7 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/services/authFactory.js"></script>
         <!-- endbuild -->
 </body>
 </html>

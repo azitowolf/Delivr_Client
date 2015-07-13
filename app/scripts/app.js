@@ -40,4 +40,12 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(['$httpProvider',
+    function($httpProvider) {
+      $httpProvider.defaults.withCredentials = true;
+    }
+  ])
+  .run(function(authFactory) {
+    authFactory.login();
   });

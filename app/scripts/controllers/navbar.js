@@ -1,14 +1,16 @@
 'use strict';
 
 (function navbarControllerIFFE(ang) {
-  var NavbarCtrl = function($location) {
+
+  var NavbarCtrl = function($location, authFactory) {
     this.isActive = function(viewLocation) {
-      console.log($location.path());
       return viewLocation === $location.path();
     };
+    this.logout = authFactory.logout;
+
   };
 
-  NavbarCtrl.$inject = ['$location'];
+  NavbarCtrl.$inject = ['$location', 'authFactory'];
   angular.module('clientApp').controller('NavbarCtrl', NavbarCtrl);
 
 })(angular);

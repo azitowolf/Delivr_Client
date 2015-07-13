@@ -2,17 +2,16 @@
 
 (function loginControllerIIFE(ang) {
 
-  var LoginCtrl = function($http, $routeParams) {
+  var LoginCtrl = function($http, $routeParams, $location, $rootScope) {
     this.loginForm = {};
     this.loginForm.username = '';
     this.loginForm.password = '';
 
-    this.user = '';
-
     this.login = function(formData) {
       $http.post('http://localhost:3000/auth/login', formData).
       success(function(data, status, headers, config) {
-        console.log(data);
+        $rootScope.currentUser = data;
+        $location.path('/main');
       }).
       error(function(data, status, headers, config) {
         console.log(headers);
@@ -21,7 +20,7 @@
 
   };
 
-  LoginCtrl.$inject = ['$http', '$routeParams'];
+  LoginCtrl.$inject = ['$http', '$routeParams', '$location', '$rootScope'];
   angular.module('clientApp').controller('LoginCtrl', LoginCtrl);
 
 })(angular);

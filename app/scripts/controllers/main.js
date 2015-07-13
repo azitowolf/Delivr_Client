@@ -1,18 +1,14 @@
 'use strict';
 
 (function mainControllerIFFE(ang) {
-  var MainCtrl = function($location) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-    this.isActive = function(viewLocation) {
-      return viewLocation === $location.path();
-    };
+  var MainCtrl = function($rootScope) {
+
+
+    ///
+
   };
 
-  MainCtrl.$inject = ['$location'];
+  MainCtrl.$inject = ['$rootScope'];
   angular.module('clientApp').controller('MainCtrl', MainCtrl);
 
 })(angular);
