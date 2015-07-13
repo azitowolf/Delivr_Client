@@ -1,0 +1,17 @@
+<div>
+
+  <form>
+      <label for="exampleInputEmail1">Email address</label>
+      <input ng-model="registerCtrl.registerForm.username" class="form-control" id="exampleInputEmail1" placeholder="Email" >
+      <p>{{registerCtrl.registerForm.username}}</p>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input ng-model="registerCtrl.registerForm.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      <p>{{registerCtrl.registerForm.password}}</p>
+    </div>
+    <button ng-click="registerCtrl.register(registerCtrl.registerForm)" class="btn btn-default">Submit</button>
+  </form>
+  <p>{{registerCtrl.registerForm}}</p>
+
+</div>
