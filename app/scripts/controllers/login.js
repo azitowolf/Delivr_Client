@@ -11,7 +11,7 @@
       $http.post('http://localhost:3000/auth/login', formData).
       success(function(data, status, headers, config) {
         $rootScope.currentUser = data;
-        $location.path('/main');
+        $location.path('/user');
       }).
       error(function(data, status, headers, config) {
         console.log(headers);

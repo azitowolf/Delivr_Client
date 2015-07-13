@@ -13,11 +13,10 @@
       var url = 'http://localhost:3000/auth/login';
       $http.get(url).
       success(function(data) {
-        angular.copy(data.user.username, factory.currentUserName);
-        angular.copy(data.user.username, factory.currentUserName);
         console.log(data);
-        $rootScope.currentUser = data;
-        // $location.path('/main');
+        $rootScope.currentUser = data.user;
+        $rootScope.currentUserName = data.user.username;
+        $location.path('/user');
       }).
       error(function(data, err) {
         console.error(err);
