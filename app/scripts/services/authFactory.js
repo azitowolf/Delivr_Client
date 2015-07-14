@@ -13,9 +13,9 @@
       var url = 'http://localhost:3000/auth/login';
       $http.get(url).
       success(function(data) {
-        console.log(data);
         $rootScope.currentUser = data.user;
         $rootScope.currentUserName = data.user.username;
+        factory.currentUser = data.user;
         $location.path('/user');
       }).
       error(function(headers) {

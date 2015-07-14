@@ -1,29 +1,63 @@
-// 'use strict';
+'use strict';
 
-// (function usersFactoryIIFE() {
+(function deliveriesFactoryIIFE(angular) {
 
-//   // Create a customers factory
-//   var usersFactory = function($http) {
-//     var factory = {};
-//     factory.user = {};
-//     factory.users = [];
+  var deliveriesFactory = function($http, $rootScope, $location) {
+    var factory = {};
 
-//     factory.getUsers = function() {
-//       // allow access to the list of customers
-//       return $http.get('http://localhost:3000/users/api').success(function(response) {
-//         angular.copy(response, factory.customers);
-//       });
-//     };
+    factory.deliveries = {};
 
-//     factory.getUser = function(userId) {
-//       return $http.get('http://localhost:3000/customers/api/' + userId).success(function(response) {
-//         angular.copy(response, factory.user);
-//       });
-//     };
-//     return factory;
-//   };
+    factory.index = function() {
+      var url = 'http://localhost:3000/deliveries/api';
+      $http.get(url).
+      success(function(data) {
+        console.log(data);
+        factory.deliveries = data;
+      }).
+      error(function(data, err) {
+        console.log(err);
+      });
+    };
 
-//   usersFactory.$inject = ['$http'];
+    factory.post = function(formData) {
+      var url = 'http://localhost:3000/deliveries/api';
+      $http.post(url, formData).
+      success(function(data) {
+        console.log('successfully created unconfirmed delivery');
+      }).
+      error(function(data, err) {
+        console.log(err);
+      });
+    };
 
-//   angular.module('usersApp').factory('customersFactory', customersFactory);
-// })();
+    factory.find = function(id) {
+      $http.post('http://localhost:3000/deliveries/api/' + id, formData).
+      success(function(data, status, headers, config) {
+        $rootScope.currentUser = data.user;
+        $rootScope.currentUserName = data.user.username;
+        $location.path('/user');
+      }).
+      error(function(data, status, headers, config) {
+        console.log(headers);
+      });
+    };
+
+    factory.register = function(formData) {
+      $http.post('http://localhost:3000/auth/register', formData).
+      success(function(data) {
+        $rootScope.currentUser = data.user;
+        $rootScope.currentUserName = data.user.username;
+        $location.path('/user');
+      }).
+      error(function(data) {
+        console.log(headers);
+      });
+    };
+
+    return factory;
+  };
+
+  deliveriesFactory.$inject = ['$http', '$rootScope', '$location'];
+
+  angular.module('clientApp').factory('deliveriesFactory', deliveriesFactory);
+})(angular);

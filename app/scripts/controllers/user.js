@@ -2,10 +2,10 @@
 
 (function registerControllerIIFE(ang) {
 
-  var UserCtrl = function() {
+  var UserCtrl = function(authFactory, deliveriesFactory) {
     this.createDeliveryForm = {};
 
-    this.createDeliveryForm.user = 'currentUser.Id;';
+    this.createDeliveryForm.user = authFactory.currentUser._id;
 
     this.createDeliveryForm.locationA = {};
     this.createDeliveryForm.locationA.street = '';
@@ -21,9 +21,17 @@
     this.createDeliveryForm.locationB.state = '';
     this.createDeliveryForm.locationB.zipCode = '';
 
+
+    this.currentUser = authFactory.currentUser;
+    this.postDelivery = deliveriesFactory.post;
+    this.getDeliveries = deliveriesFactory.index;
+    this.deliveries = deliveriesFactory.deliveries;
+
+    this.getDeliveries();
+
   };
 
-  UserCtrl.$inject = [];
+  UserCtrl.$inject = ['authFactory', 'deliveriesFactory'];
   angular.module('clientApp').controller('UserCtrl', UserCtrl);
 
 })(angular);

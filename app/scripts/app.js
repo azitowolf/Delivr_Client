@@ -1,13 +1,7 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name clientApp
- * @description
- * # clientApp
- *
- * Main module of the application.
- */
+//Main module of the Application
+
 angular
   .module('clientApp', [
     'ngAnimate',
