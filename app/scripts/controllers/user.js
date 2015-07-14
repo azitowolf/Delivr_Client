@@ -3,7 +3,7 @@
 (function registerControllerIIFE(ang) {
 
   var UserCtrl = function() {
-    this.registerForm = {};
+    this.hideModal = true;
 
 
   };

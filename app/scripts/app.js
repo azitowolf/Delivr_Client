@@ -52,5 +52,5 @@ angular
     }
   ])
   .run(function(authFactory) {
-    authFactory.login();
+    authFactory.confirmLogin();
   });

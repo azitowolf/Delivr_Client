@@ -2,24 +2,19 @@
 
 (function registerControllerIIFE(ang) {
 
-  var RegisterCtrl = function($http, $routeParams) {
+  var RegisterCtrl = function($http, $routeParams, authFactory) {
     this.registerForm = {};
     this.registerForm.username = '';
     this.registerForm.password = '';
+    this.registerForm.firstName = '';
+    this.registerForm.lastName = '';
+    this.registerForm.phoneNumber = '';
 
-    this.register = function(formData) {
-      $http.post('http://localhost:3000/auth/register', formData).
-      success(function(data) {
-        console.log(data);
-      }).
-      error(function(data, status, headers, config) {
-        console.log(headers);
-      });
-    };
+    this.register = authFactory.register;
 
   };
 
-  RegisterCtrl.$inject = ['$http', '$routeParams'];
+  RegisterCtrl.$inject = ['$http', '$routeParams', 'authFactory'];
   angular.module('clientApp').controller('RegisterCtrl', RegisterCtrl);
 
 })(angular);

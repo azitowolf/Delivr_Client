@@ -9,7 +9,7 @@
     factory.currentUserName = {};
     factory.currentUserPass = {};
 
-    factory.login = function() {
+    factory.confirmLogin = function() {
       var url = 'http://localhost:3000/auth/login';
       $http.get(url).
       success(function(data) {
@@ -18,8 +18,8 @@
         $rootScope.currentUserName = data.user.username;
         $location.path('/user');
       }).
-      error(function(data, err) {
-        console.error(err);
+      error(function(headers) {
+        console.log(headers);
       });
     };
 
@@ -28,13 +28,39 @@
       console.log(url);
       $http.get(url).
       success(function(data) {
-        console.log(data);
+        $rootScope.currentUser = '';
+        $rootScope.currentUserName = '';
         $location.path('/main');
       }).
       error(function(data, err) {
         console.error(err);
       });
     };
+
+    factory.login = function(formData) {
+      $http.post('http://localhost:3000/auth/login', formData).
+      success(function(data, status, headers, config) {
+        $rootScope.currentUser = data.user;
+        $rootScope.currentUserName = data.user.username;
+        $location.path('/user');
+      }).
+      error(function(data, status, headers, config) {
+        console.log(headers);
+      });
+    };
+
+    factory.register = function(formData) {
+      $http.post('http://localhost:3000/auth/register', formData).
+      success(function(data) {
+        $rootScope.currentUser = data.user;
+        $rootScope.currentUserName = data.user.username;
+        $location.path('/user');
+      }).
+      error(function(data) {
+        console.log(headers);
+      });
+    };
+
     return factory;
   };
 
