@@ -1,12 +1,159 @@
 <div class="container">
     <div class="span3 well">
         <center>
-        <a href="" data-toggle="modal"><img src="#" name="aboutme" width="140" height="140" class="img-circle"></a>
+        <a href="" data-toggle="modal"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme" width="140" height="140" class="img-circle"></a>
         <h3>{{currentUserName}}</h3>
-        <em>click to edit</em>
-        <button class="btn" ng-click="showModal = !showModal">Edit</button>
+        <button class="btn" ng-click="showModal = !showModal">Settings</button>
     </center>
     </div>
+
+    <nav class="navbar navbar-findcond">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Create a New Delivery</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Past Deliveries <span class="sr-only">(current)</span></a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="row">
+        <button class="btn btn-success" ng-click="enterAddress1 = !enterAddress1"> <i class="glyphicon glyphicon-send"></i> Enter Address 1</button>
+    </div>
+    <div class="row">
+        <button class="btn btn-warning" ng-click="enterDetails = !enterDetails">Enter Details</button>
+    </div>
+    <div class="row">
+        <button class="btn btn-success" ng-click="enterAddress2 = !enterAddress2"><i class="glyphicon glyphicon-send"></i> Enter Address 1 </button>
+    <div class="row">
+
+    <p>{{userCtrl.createDeliveryForm}}</p>
+
+    <form action="">
+        <div class="newDeliveryForm" ng-show="enterAddress1">
+          <div class="row">
+            <div class="col-md-12">
+              <form class="form-in-line" role="form">
+                <fieldset>
+                  <!-- Form Name -->
+                  <legend>Where From ?</legend>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Address 1</label>
+                    <div class="col-sm-10">
+                      <input type="text" placeholder="Address Line 1" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.street">
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">City</label>
+                    <div class="col-sm-10">
+                      <input type="text" placeholder="City" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.city">
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">State</label>
+                    <div class="col-sm-4">
+                      <input type="text" placeholder="State" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.state">
+                    </div>
+
+                    <label class="col-sm-2 control-label" for="textinput">Zipcode</label>
+                    <div class="col-sm-4">
+                      <input type="text" placeholder="Post Code" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.zipCode">
+                    </div>
+                  </div>
+
+                </fieldset>
+
+            </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+    </div>
+
+
+        <div ng-show="enterDetails">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="textinput">Tell us about the item we are moving</label>
+                <div class="col-sm-10">
+                  <input type="textarea" class="form-control" ng-model="userCtrl.createDeliveryForm.details">
+                </div>
+            </div>
+        </div>
+
+        <div class="newDeliveryForm" ng-show="enterAddress2">
+
+          <div class="row">
+            <div class="col-md-12">
+              <form class="form-in-line" role="form">
+                <fieldset>
+                  <!-- Form Name -->
+                  <legend>Where To ?</legend>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">Address</label>
+                    <div class="col-sm-10">
+                      <input type="text" placeholder="Address Line 1" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.street">
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">City</label>
+                    <div class="col-sm-10">
+                      <input type="text" placeholder="City" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.city">
+                    </div>
+                  </div>
+
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="textinput">State</label>
+                    <div class="col-sm-4">
+                      <input type="text" placeholder="State" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.state">
+                    </div>
+
+                    <label class="col-sm-2 control-label" for="textinput">Postcode</label>
+                    <div class="col-sm-4">
+                      <input type="text" placeholder="Post Code" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.zipCode">
+                    </div>
+                  </div>
+
+                </fieldset>
+
+            </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+
+      <div class="form-group">
+        <div class="col-sm-12">
+          <div class="pull-right">
+            <button type="submit" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    </form>
+
+
+
+
     <!-- Modal -->
     <div class="modal" ng-class="{show: showModal}" id="myModal" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
         <div class="modal-dialog">
@@ -25,18 +172,20 @@
                     <hr>
                     <center>
                         <table class="table table-striped">
-                          <td>{{currentUser.firstName}} {{currentUser.lastname}}</td>
-                          <td>{{currentUser.phoneNumber}}</td>
-                          <td>Credit Card Saved : </td>
+                          <td>Name: {{currentUser.firstName}} {{currentUser.lastname}}</tr>
+                          <td>Pnoe Number: {{currentUser.phoneNumber}}</tr>
+                          <td>Credit Card Saved: </tr>
                         </table>
                     </center>
                 </div>
                 <div class="modal-footer">
                     <center>
-                    <button type="button" class="btn btn-default" ng-click="showModal = !showModal">I've heard enough about Joe</button>
+                    <button type="button" class="btn btn-default" ng-click="showModal = !showModal">Close</button>
                     </center>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
