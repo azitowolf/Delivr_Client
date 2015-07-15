@@ -8,7 +8,7 @@
     factory.deliveries = {};
 
     factory.getApiKeys = function() {
-      var url = 'http://localhost:3000';
+      var url = 'http://localhost:3000/auth/';
       $http.get(url).
       success(function(data) {
         console.log(data);
