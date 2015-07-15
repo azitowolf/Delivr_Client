@@ -36,6 +36,16 @@ angular
         controller: 'UserCtrl',
         controllerAs: 'userCtrl'
       })
+      .when('/userNewDelivery', {
+        templateUrl: 'views/userNewDelivery.html',
+        controller: 'UserCtrl',
+        controllerAs: 'userCtrl'
+      })
+      .when('/userViewDeliveries', {
+        templateUrl: 'views/userViewDeliveries.html',
+        controller: 'UserCtrl',
+        controllerAs: 'userCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -43,6 +53,8 @@ angular
   .config(['$httpProvider',
     function($httpProvider) {
       $httpProvider.defaults.withCredentials = true;
+      $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
   ])
   .run(function(authFactory) {

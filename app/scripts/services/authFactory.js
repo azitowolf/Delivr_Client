@@ -6,16 +6,14 @@
   var authFactory = function($http, $rootScope, $location) {
     var factory = {};
 
-    factory.currentUserName = {};
-    factory.currentUserPass = {};
+    factory.currentUser = {};
 
     factory.confirmLogin = function() {
       var url = 'http://localhost:3000/auth/login';
       $http.get(url).
       success(function(data) {
-        $rootScope.currentUser = data.user;
-        $rootScope.currentUserName = data.user.username;
         factory.currentUser = data.user;
+        $rootScope.currentUserName = data.user.username;
         $location.path('/user');
       }).
       error(function(headers) {
@@ -28,8 +26,8 @@
       console.log(url);
       $http.get(url).
       success(function(data) {
-        $rootScope.currentUser = '';
-        $rootScope.currentUserName = '';
+        factory.currentUser = data.user;
+        $rootScope.currentUserName = undefined;
         $location.path('/main');
       }).
       error(function(data, err) {
@@ -40,7 +38,7 @@
     factory.login = function(formData) {
       $http.post('http://localhost:3000/auth/login', formData).
       success(function(data, status, headers, config) {
-        $rootScope.currentUser = data.user;
+        factory.currentUser = data.user;
         $rootScope.currentUserName = data.user.username;
         $location.path('/user');
       }).
@@ -52,7 +50,7 @@
     factory.register = function(formData) {
       $http.post('http://localhost:3000/auth/register', formData).
       success(function(data) {
-        $rootScope.currentUser = data.user;
+        factory.currentUser = data.user;
         $rootScope.currentUserName = data.user.username;
         $location.path('/user');
       }).

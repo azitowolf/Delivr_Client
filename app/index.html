@@ -39,17 +39,17 @@
             <ul class="nav navbar-nav" ng-controller="NavbarCtrl as navCtrl">
               <li ng-class="{active: navCtrl.isActive('/')}"><a href="#/">Home</a></li>
               <li ng-class="{active: navCtrl.isActive('/about')}"><a ng-href="#/about">About</a></li>
-              <li ng-show="!currentUser" ng-class="{active: navCtrl.isActive('/login')}"><a ng-href="#/login">Login</a></li>
-              <li ng-show="!currentUser" ng-class="{active: navCtrl.isActive('/register')}"><a  ng-href="#/register">Register</a></li>
-              <li ng-show="currentUser"><a ng-href="#/register" ng-click="navCtrl.logout()">Logout</a></li>
-              <li ng-show="currentUser"><a href="#/user"> Logged in as : {{currentUserName}}</a></li>
+              <li ng-show="!currentUserName" ng-class="{active: navCtrl.isActive('/login')}"><a ng-href="#/login">Login</a></li>
+              <li ng-show="!currentUserName" ng-class="{active: navCtrl.isActive('/register')}"><a  ng-href="#/register">Register</a></li>
+              <li ng-show="currentUserName"><a ng-href="#/register" ng-click="navCtrl.logout()">Logout</a></li>
+              <li ng-show="currentUserName"><a href="#/user"> Logged in as : {{currentUserName}}</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container appContent">
     <div ng-view=""></div>
     </div>
 
@@ -94,6 +94,9 @@
         <script src="scripts/controllers/user.js"></script>
         <script src="scripts/services/authFactory.js"></script>
         <script src="scripts/services/deliveriesFactory.js"></script>
+        <script src="scripts/services/postmatesFactory.js"></script>
+        <script src="scripts/services/stripeFactory.js"></script>
+        <script src="scripts/services/base64Factory.js"></script>
         <!-- endbuild -->
 </body>
 </html>

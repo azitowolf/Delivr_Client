@@ -1,0 +1,17 @@
+
+<div class="myDeliveriesDiv">
+    <h1>My Deliveries</h1>
+
+    <div ng-repeat="delivery in userCtrl.deliveries">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h2 class="panel-title">{{delivery.status}}</h2>
+      </div>
+      <h3>{{delivery.description}}</h3>
+      <p>FROM : {{delivery.locationA}}</p>
+      <p>TO : {{delivery.locationB}}</p>
+    </div>
+    </div>
+</div>
+
+
