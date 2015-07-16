@@ -11,10 +11,10 @@
       var url = 'http://localhost:3000/deliveries/api';
       $http.get(url).
       success(function(data) {
-        console.log(data);
         factory.deliveries = data;
       }).
       error(function(data, err) {
+        console.log(data);
         console.log(err);
       });
     };
@@ -23,38 +23,25 @@
       var url = 'http://localhost:3000/deliveries/api';
       $http.post(url, formData).
       success(function(data) {
-
         console.log(data);
-
         authFactory.addDelivery(data);
-
       }).
       error(function(data, err) {
+        console.log(data);
         console.log(err);
       });
     };
 
     factory.find = function(id) {
-      $http.post('http://localhost:3000/deliveries/api/' + id, formData).
-      success(function(data, status, headers, config) {
-        $rootScope.currentUser = data.user;
-        $rootScope.currentUserName = data.user.username;
-        $location.path('/user');
-      }).
-      error(function(data, status, headers, config) {
-        console.log(headers);
-      });
-    };
-
-    factory.register = function(formData) {
-      $http.post('http://localhost:3000/auth/register', formData).
+      $http.get('http://localhost:3000/deliveries/api/' + id).
       success(function(data) {
         $rootScope.currentUser = data.user;
         $rootScope.currentUserName = data.user.username;
         $location.path('/user');
       }).
-      error(function(data) {
-        console.log(headers);
+      error(function(data, err) {
+        console.log(data);
+        console.log(err);
       });
     };
 
