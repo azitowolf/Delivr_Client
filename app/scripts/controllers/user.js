@@ -32,7 +32,7 @@
     this.deliveries = deliveriesFactory.deliveries;
     this.getPostmatesProposal = postmatesFactory.getProposal;
 
-    this.getDeliveries();
+    // this.getDeliveries();
 
   };
 

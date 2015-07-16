@@ -2,12 +2,12 @@
 
 (function authFactoryIIFE() {
 
-  // making a GET to login to return the current users information and inform the global scope
   var authFactory = function($http, $rootScope, $location) {
     var factory = {};
 
     factory.currentUser = {};
 
+    //Ensuring sessions - this is a .run function
     factory.confirmLogin = function() {
       var url = 'http://localhost:3000/auth/login';
       $http.get(url).
@@ -16,14 +16,14 @@
         $rootScope.currentUser = data.user;
         $location.path('/user');
       }).
-      error(function(headers) {
-        console.log(headers);
+      error(function(data, err) {
+        console.error(data);
+        console.error(err);
       });
     };
 
     factory.logout = function() {
       var url = 'http://localhost:3000/auth/logout';
-      console.log(url);
       $http.get(url).
       success(function(data) {
         factory.currentUser = data.user;
@@ -31,19 +31,21 @@
         $location.path('/main');
       }).
       error(function(data, err) {
+        console.error(data);
         console.error(err);
       });
     };
 
     factory.login = function(formData) {
       $http.post('http://localhost:3000/auth/login', formData).
-      success(function(data, status, headers, config) {
+      success(function(data) {
         factory.currentUser = data.user;
         $rootScope.currentUser = data.user;
         $location.path('/user');
       }).
-      error(function(data, status, headers, config) {
-        console.log(headers);
+      error(function(data, err) {
+        console.error(data);
+        console.error(err);
       });
     };
 
@@ -54,9 +56,25 @@
         $rootScope.currentUser = data.user;
         $location.path('/user');
       }).
-      error(function(data) {
-        console.log(headers);
+      error(function(data, err) {
+        console.error(data);
+        console.error(err);
       });
+    };
+
+    factory.addDelivery = function(currentDelivery) {
+      var LoggedUserID = factory.currentUser._id;
+      var url = 'http://localhost:3000/users/api/' + LoggedUserID;
+      $http.put(url, {
+        delivery: currentDelivery
+      })
+        .success(function(data) {
+          console.log(data);
+        })
+        .error(function(data, err) {
+          console.error(data);
+          console.error(err);
+        });
     };
 
     return factory;

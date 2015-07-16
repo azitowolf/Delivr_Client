@@ -2,7 +2,7 @@
 
 (function deliveriesFactoryIIFE(angular) {
 
-  var deliveriesFactory = function($http, $rootScope, $location) {
+  var deliveriesFactory = function($http, $rootScope, $location, authFactory) {
     var factory = {};
 
     factory.deliveries = {};
@@ -24,7 +24,9 @@
       $http.post(url, formData).
       success(function(data) {
         console.log(data);
-        $rootScope.currentUser.currentDeliveries.push(data);
+
+        authFactory.addDelivery(formData);
+
       }).
       error(function(data, err) {
         console.log(err);
@@ -58,7 +60,7 @@
     return factory;
   };
 
-  deliveriesFactory.$inject = ['$http', '$rootScope', '$location'];
+  deliveriesFactory.$inject = ['$http', '$rootScope', '$location', 'authFactory'];
 
   angular.module('clientApp').factory('deliveriesFactory', deliveriesFactory);
 })(angular);
