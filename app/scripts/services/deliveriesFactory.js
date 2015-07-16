@@ -23,9 +23,10 @@
       var url = 'http://localhost:3000/deliveries/api';
       $http.post(url, formData).
       success(function(data) {
+
         console.log(data);
 
-        authFactory.addDelivery(formData);
+        authFactory.addDelivery(data);
 
       }).
       error(function(data, err) {
