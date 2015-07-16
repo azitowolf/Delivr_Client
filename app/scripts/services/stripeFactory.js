@@ -14,7 +14,7 @@
   };
 
 
-  authFactory.$inject = ['$http', '$rootScope', '$location'];
+  stripeFactory.$inject = ['$http', '$rootScope', '$location'];
 
   angular.module('clientApp').factory('stripeFactory', stripeFactory);
 })();

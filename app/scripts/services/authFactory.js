@@ -13,7 +13,7 @@
       $http.get(url).
       success(function(data) {
         factory.currentUser = data.user;
-        $rootScope.currentUserName = data.user.username;
+        $rootScope.currentUser = data.user;
         $location.path('/user');
       }).
       error(function(headers) {
@@ -27,7 +27,7 @@
       $http.get(url).
       success(function(data) {
         factory.currentUser = data.user;
-        $rootScope.currentUserName = undefined;
+        $rootScope.currentUser = undefined;
         $location.path('/main');
       }).
       error(function(data, err) {
@@ -39,7 +39,7 @@
       $http.post('http://localhost:3000/auth/login', formData).
       success(function(data, status, headers, config) {
         factory.currentUser = data.user;
-        $rootScope.currentUserName = data.user.username;
+        $rootScope.currentUser = data.user;
         $location.path('/user');
       }).
       error(function(data, status, headers, config) {
@@ -51,7 +51,7 @@
       $http.post('http://localhost:3000/auth/register', formData).
       success(function(data) {
         factory.currentUser = data.user;
-        $rootScope.currentUserName = data.user.username;
+        $rootScope.currentUser = data.user;
         $location.path('/user');
       }).
       error(function(data) {

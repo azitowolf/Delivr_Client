@@ -23,7 +23,8 @@
       var url = 'http://localhost:3000/deliveries/api';
       $http.post(url, formData).
       success(function(data) {
-        console.log('successfully created unconfirmed delivery');
+        console.log(data);
+        $rootScope.currentUser.currentDeliveries.push(data);
       }).
       error(function(data, err) {
         console.log(err);
