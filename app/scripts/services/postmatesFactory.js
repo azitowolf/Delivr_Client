@@ -2,12 +2,14 @@
 
 (function postmatesFactoryIIFE(angular) {
 
-  var postmatesFactory = function($http, $rootScope, $location, $httpParamSerializer, authFactory) {
+  var postmatesFactory = function($http, $rootScope, $location, $httpParamSerializer, authFactory, deliveriesFactory) {
+
     var factory = {};
 
     factory.getProposal = function() {
       var url = 'http://localhost:3000/postmates/getProposal';
-      var currentDelivery = authFactory.currentUser.deliveries[authFactory.currentUser.deliveries.length - 1];
+      var currentDelivery = deliveriesFactory.workingDelivery;
+      debugger
       var locationA = currentDelivery.locationA;
       var locationB = currentDelivery.locationB;
       var data = {
@@ -28,7 +30,7 @@
     return factory;
   };
 
-  postmatesFactory.$inject = ['$http', '$rootScope', '$location', '$httpParamSerializer', 'authFactory'];
+  postmatesFactory.$inject = ['$http', '$rootScope', '$location', '$httpParamSerializer', 'authFactory', 'deliveriesFactory'];
 
   angular.module('clientApp').factory('postmatesFactory', postmatesFactory);
 })(angular);

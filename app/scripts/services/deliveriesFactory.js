@@ -23,13 +23,9 @@
     factory.addDelivery = function(formData) {
       var LoggedUserID = authFactory.currentUser._id;
       var url = 'http://localhost:3000/users/api/' + LoggedUserID;
-      $http.put(url, {
-        form: formData
-      })
+      $http.put(url, formData)
         .success(function(data) {
-          console.log(data);
-
-          // authFactory.confirmLogin();
+          factory.workingDelivery = data.deliveries[data.deliveries.length];
         })
         .error(function(data, err) {
           console.error(data);

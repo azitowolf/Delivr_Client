@@ -30,8 +30,6 @@
     this.deliveries = deliveriesFactory.deliveries;
     this.getPostmatesProposal = postmatesFactory.getProposal;
 
-    this.getDeliveries();
-
   };
 
   UserCtrl.$inject = ['authFactory', 'deliveriesFactory', 'postmatesFactory'];
