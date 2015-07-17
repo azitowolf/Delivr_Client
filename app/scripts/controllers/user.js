@@ -2,7 +2,7 @@
 
 (function registerControllerIIFE(ang) {
 
-  var UserCtrl = function(authFactory, deliveriesFactory, postmatesFactory) {
+  var UserCtrl = function(authFactory, deliveriesFactory, postmatesFactory, stripeFactory) {
     this.createDeliveryForm = {};
 
     this.createDeliveryForm.description = '';
@@ -23,6 +23,11 @@
     this.createDeliveryForm.locationB.state = '';
     this.createDeliveryForm.locationB.zipCode = '';
 
+    this.cardForm = {};
+    this.cardForm.number = '';
+    this.cardForm.cvc = '';
+    this.cardForm.exp_month = undefined;
+    this.cardForm.exp_year = undefined;
 
     this.currentUser = authFactory.currentUser;
     this.postDelivery = deliveriesFactory.addDelivery;
@@ -30,10 +35,11 @@
     this.deliveries = deliveriesFactory.deliveries;
     this.getPostmatesProposal = postmatesFactory.getProposal;
     this.currentProposal = postmatesFactory.currentProposal;
-
+    this.createStripeUserToken = stripeFactory.createUserToken;
+    this.createStripeUser = stripeFactory.createUser;
   };
 
-  UserCtrl.$inject = ['authFactory', 'deliveriesFactory', 'postmatesFactory'];
+  UserCtrl.$inject = ['authFactory', 'deliveriesFactory', 'postmatesFactory', 'stripeFactory'];
   angular.module('clientApp').controller('UserCtrl', UserCtrl);
 
 })(angular);
