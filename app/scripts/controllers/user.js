@@ -5,12 +5,10 @@
   var UserCtrl = function(authFactory, deliveriesFactory, postmatesFactory) {
     this.createDeliveryForm = {};
 
-    this.createDeliveryForm.user = authFactory.currentUser._id;
     this.createDeliveryForm.description = '';
     this.createDeliveryForm.status = 'created';
     this.createDeliveryForm.price = 0;
-    this.createDeliveryForm.postmatesProposal = undefined;
-    this.createDeliveryForm.deliveryTime = undefined;
+    this.createDeliveryForm.deliveryTime = '';
 
     this.createDeliveryForm.locationA = {};
     this.createDeliveryForm.locationA.street = '';
@@ -27,7 +25,7 @@
 
 
     this.currentUser = authFactory.currentUser;
-    this.postDelivery = deliveriesFactory.post;
+    this.postDelivery = deliveriesFactory.addDelivery;
     this.getDeliveries = deliveriesFactory.index;
     this.deliveries = deliveriesFactory.deliveries;
     this.getPostmatesProposal = postmatesFactory.getProposal;

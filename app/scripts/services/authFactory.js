@@ -14,7 +14,6 @@
       success(function(data) {
         factory.currentUser = data.user;
         $rootScope.currentUser = data.user;
-        $location.path('/user');
       }).
       error(function(data, err) {
         console.error(data);
@@ -62,20 +61,7 @@
       });
     };
 
-    factory.addDelivery = function(currentDelivery) {
-      var LoggedUserID = factory.currentUser._id;
-      var url = 'http://localhost:3000/users/api/' + LoggedUserID;
-      $http.put(url, {
-        delivery: currentDelivery
-      })
-        .success(function(data) {
-          console.log(data);
-        })
-        .error(function(data, err) {
-          console.error(data);
-          console.error(err);
-        });
-    };
+
 
     return factory;
   };

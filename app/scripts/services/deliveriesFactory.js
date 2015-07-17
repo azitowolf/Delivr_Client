@@ -19,17 +19,20 @@
       });
     };
 
-    factory.post = function(formData) {
-      var url = 'http://localhost:3000/deliveries/api';
-      $http.post(url, formData).
-      success(function(data) {
-        console.log(data);
-        authFactory.addDelivery(data);
-      }).
-      error(function(data, err) {
-        console.log(data);
-        console.log(err);
-      });
+    factory.addDelivery = function(formData) {
+      var LoggedUserID = authFactory.currentUser._id;
+      var url = 'http://localhost:3000/users/api/' + LoggedUserID;
+      $http.put(url, {
+        form: formData
+      })
+        .success(function(data) {
+          console.log(data);
+          // authFactory.confirmLogin();
+        })
+        .error(function(data, err) {
+          console.error(data);
+          console.error(err);
+        });
     };
 
     factory.find = function(id) {

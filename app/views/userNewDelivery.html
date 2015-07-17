@@ -1,218 +1,106 @@
 
-<!--         <div class="row text-center">
-
-            <div class="col-md-12" style="margin-top: 20px;">
-                <div class="pricing-table col-sm-6">
-                    <div class="panel panel-primary" style="border: none;">
-                        <div class="controle-header panel-heading panel-heading-landing">
-                            <h1 class="panel-title panel-title-landing">
-                                Location A
-                            </h1>
-                        </div>
-
-                        <div class="panel-body panel-body-landing">
-                            <table class="table">
-                                <tr>
-                                    <td width="50px"><i class="fa fa-check"></i></td>
-                                    <td>{{userCtrl.createDeliveryForm.locationA.street}}</td>
-                                </tr>
-                                <tr>
-                                    <td width="50px"><i class="fa fa-check"></i></td>
-                                    <td>{{userCtrl.createDeliveryForm.locationA.city}}</td>
-                                </tr>
-                                <tr>
-                                    <td width="50px"><i class="fa fa-check"></i></td>
-                                    <td>{{userCtrl.createDeliveryForm.locationA.state}}</td>
-                                </tr>
-                                  <tr>
-                                    <td width="50px"><i class="fa fa-check"></i></td>
-                                    <td>{{userCtrl.createDeliveryForm.locationA.zipCode}}</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-footer panel-footer-landing">
-                            <a href="#" class="btn btn-price btn-success btn-lg">Edit</a>
-                        </div>
-                    </div>
+<div class="row text-center">
+  <form action="">
+    <div class="col-md-12" style="margin-top: 20px;">
+        <div class="pricing-table col-sm-6">
+            <div class="panel panel-primary" style="border: none;">
+                <div class="controle-header panel-heading panel-heading-landing">
+                    <h1 class="panel-title panel-title-landing">
+                        Location A
+                    </h1>
                 </div>
-                <div class="pricing-table col-sm-6">
-                  <div class="panel panel-primary" style="border: none;">
-                      <div class="controle-header panel-heading panel-heading-landing">
-                          <h1 class="panel-title panel-title-landing">
-                              Location B
-                          </h1>
-                      </div>
 
-                      <div class="panel-body panel-body-landing">
-                          <table class="table">
-                              <tr>
-                                  <td width="50px"><i class="fa fa-check"></i></td>
-                                  <td>{{userCtrl.createDeliveryForm.locationB.street}}</td>
-                              </tr>
-                              <tr>
-                                  <td width="50px"><i class="fa fa-check"></i></td>
-                                  <td>{{userCtrl.createDeliveryForm.locationB.city}}</td>
-                              </tr>
-                              <tr>
-                                  <td width="50px"><i class="fa fa-check"></i></td>
-                                  <td>{{userCtrl.createDeliveryForm.locationB.state}}</td>
-                              </tr>
-                                <tr>
-                                  <td width="50px"><i class="fa fa-check"></i></td>
-                                  <td>{{userCtrl.createDeliveryForm.locationB.zipCode}}</td>
-                              </tr>
-                          </table>
-                      </div>
-                      <div class="panel-footer panel-footer-landing">
-                          <a href="#" class="btn btn-price btn-success btn-lg">Edit</a>
-                      </div>
-                  </div>
-              </div>
-              <div class="pricing-table col-sm-12">
-                  <div class="panel panel-primary" style="border: none;">
-                      <div class="controle-header panel-heading panel-heading-landing">
-                          <h1 class="panel-title panel-title-landing">
-                              Description
-                          </h1>
-                      </div>
-                      <div class="panel-body panel-body-landing">
-                          <table class="table">
-                              <tr>
-                                  <td width="50px"><i class="fa fa-check"></i></td>
-                                  <td>{{userCtrl.createDeliveryForm.details}}</td>
-                              </tr>
-
-                          </table>
-                      </div>
-                      <div class="panel-footer panel-footer-landing">
-
-                      </div>
-                  </div>
-              </div>
-            </div>
-        </div> -->
-
-
-    </div>
-
-    <div class="text-center">
-        <button class="btn btn-success" ng-click="enterAddress1 = !enterAddress1"> <i class="glyphicon glyphicon-send"></i> Enter Address 1</button>
-
-        <button class="btn btn-warning" ng-click="enterDetails = !enterDetails">Enter Details</button>
-
-        <button class="btn btn-success" ng-click="enterAddress2 = !enterAddress2"><i class="glyphicon glyphicon-send"></i> Enter Address 1 </button>
-    </div>
-
-    <form action="">
-        <div class="newDeliveryForm" ng-show="enterAddress1">
-          <div class="row">
-            <div class="col-md-12">
-              <form class="form-in-line" role="form">
-                <fieldset>
-                  <!-- Form Name -->
-                  <legend>Where From ?</legend>
-
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="textinput">Address 1</label>
-                    <div class="col-sm-10">
-                      <input type="text" placeholder="Address Line 1" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.street">
-                    </div>
-                  </div>
-
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="textinput">City</label>
-                    <div class="col-sm-10">
-                      <input type="text" placeholder="City" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.city">
-                    </div>
-                  </div>
-
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="textinput">State</label>
-                    <div class="col-sm-4">
-                      <input type="text" placeholder="State" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.state">
-                    </div>
-
-                    <label class="col-sm-2 control-label" for="textinput">Zipcode</label>
-                    <div class="col-sm-4">
-                      <input type="text" placeholder="Post Code" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.zipCode">
-                    </div>
-                  </div>
-
-                </fieldset>
-
-            </div><!-- /.col-lg-12 -->
-        </div><!-- /.row -->
-    </div>
-
-
-        <div ng-show="enterDetails">
-            <div class="form-group">
-                <label class="col-sm-2 control-label" for="textinput">Tell us about the item we are moving</label>
-                <div class="col-sm-10">
-                  <input type="textarea" class="form-control" ng-model="userCtrl.createDeliveryForm.description">
+                <div class="panel-body panel-body-landing">
+                    <table class="table">
+                        <tr>
+                            <td width="50px"><i class="fa fa-check"></i></td>
+                            <td><input type="text" placeholder="Address Line 1" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.street"></td>
+                        </tr>
+                        <tr>
+                            <td width="50px"><i class="fa fa-check"></i></td>
+                            <td><input type="text" placeholder="City" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.city"></td>
+                        </tr>
+                        <tr>
+                            <td width="50px"><i class="fa fa-check"></i></td>
+                            <td><input type="text" placeholder="State" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.state"></td>
+                        </tr>
+                          <tr>
+                            <td width="50px"><i class="fa fa-check"></i></td>
+                            <td><input type="text" placeholder="Post Code" class="form-control" ng-model="userCtrl.createDeliveryForm.locationA.zipCode"></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
+        <div class="pricing-table col-sm-6">
+          <div class="panel panel-primary" style="border: none;">
+              <div class="controle-header panel-heading panel-heading-landing">
+                  <h1 class="panel-title panel-title-landing">
+                      Location B
+                  </h1>
+              </div>
 
-        <div class="newDeliveryForm" ng-show="enterAddress2">
-
-          <div class="row">
-            <div class="col-md-12">
-              <form class="form-in-line" role="form">
-                <fieldset>
-                  <!-- Form Name -->
-                  <legend>Where To ?</legend>
-
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="textinput">Address</label>
-                    <div class="col-sm-10">
-                      <input type="text" placeholder="Address Line 1" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.street">
-                    </div>
-                  </div>
-
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="textinput">City</label>
-                    <div class="col-sm-10">
-                      <input type="text" placeholder="City" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.city">
-                    </div>
-                  </div>
-
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="textinput">State</label>
-                    <div class="col-sm-4">
-                      <input type="text" placeholder="State" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.state">
-                    </div>
-
-                    <label class="col-sm-2 control-label" for="textinput">Postcode</label>
-                    <div class="col-sm-4">
-                      <input type="text" placeholder="Post Code" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.zipCode">
-                    </div>
-                  </div>
-
-                </fieldset>
-
-            </div><!-- /.col-lg-12 -->
-        </div><!-- /.row -->
-
-      <div class="form-group">
-        <div class="col-sm-12">
-          <div class="pull-right">
-            <button type="submit" class="btn btn-default">Cancel</button>
-            <button ng-click="userCtrl.postDelivery(userCtrl.createDeliveryForm)" type="submit" class="btn btn-primary">Post</button>
+              <div class="panel-body panel-body-landing">
+                  <table class="table">
+                      <tr>
+                          <td width="50px"><i class="fa fa-check"></i></td>
+                          <td><input type="text" placeholder="Address Line 1" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.street"></td>
+                      </tr>
+                      <tr>
+                          <td width="50px"><i class="fa fa-check"></i></td>
+                          <td><input type="text" placeholder="City" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.city"></td>
+                      </tr>
+                      <tr>
+                          <td width="50px"><i class="fa fa-check"></i></td>
+                          <td><input type="text" placeholder="State" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.state"></td>
+                      </tr>
+                        <tr>
+                          <td width="50px"><i class="fa fa-check"></i></td>
+                          <td> <input type="text" placeholder="Post Code" class="form-control" ng-model="userCtrl.createDeliveryForm.locationB.zipCode"></td>
+                      </tr>
+                  </table>
+              </div>
           </div>
-        </div>
       </div>
+      <div class="pricing-table col-sm-12">
+          <div class="panel panel-primary" style="border: none;">
+              <div class="controle-header panel-heading panel-heading-landing">
+                  <h1 class="panel-title panel-title-landing">
+                      Description
+                  </h1>
+              </div>
+              <div class="panel-body panel-body-landing">
+                  <table class="table">
+                      <tr>
+                          <td width="50px"><i class="fa fa-check"></i></td>
+                          <td><input type="textarea" class="form-control" ng-model="userCtrl.createDeliveryForm.description"></td>
+                      </tr>
 
+                  </table>
+              </div>
+              <div class="panel-footer panel-footer-landing">
+
+              </div>
+          </div>
+      </div>
     </div>
-  </form>
+
+</div>
+
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <div class="pull-right">
+        <button type="submit" class="btn btn-default">Cancel</button>
+        <button ng-click="userCtrl.postDelivery(userCtrl.createDeliveryForm)" type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </div>
+  </div>
+</form>
 
 <button ng-click="userCtrl.getPostmatesProposal()">Get proposal</button>
+
+<p>{{userCtrl.createDeliveryForm}}</p>
 <!-- <button ng-click="userCtrl.addDelivery(55a542bdaa627afa56cf501d,currentUser._id)">Add Delivery</button> -->
 
   </div>
