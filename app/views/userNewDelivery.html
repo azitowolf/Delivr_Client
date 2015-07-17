@@ -1,4 +1,7 @@
 <div ng-include src="'views/user.html'"></div>
+<div class="page-header">
+  <h1>Create A New Delivery</h1>
+</div>
 <div class="row text-center">
   <form action="">
     <div class="col-md-12" style="margin-top: 20px;">
@@ -90,16 +93,18 @@
 
   <div class="form-group">
     <div class="col-sm-12">
-      <div ng-show="currentProposal" class="alert alert-success text-center" role="alert">
-        <p>Price : {{currentProposal.fee}}</p>
+      <div ng-show="currentProposal" ng-class="{'currentProposal.fee' : 'alert-success'}" class="alert text-center" role="alert">
+        <p ng-hide="currentProposal.fee">NOT AVAILABLE</p>
+        <p ng-hide="currentProposal.fee">{{currentProposal.message}}</p>
+        <p>Price : {{currentProposal.fee /100 | currency}}</p>
         <p>Duration: {{currentProposal.duration}}</p>
-        <button class="btn btn-danger" ng-show="currentProposal">Approve</button>
-        <button class="btn btn-success" ng-show="currentProposal">Reject</button>
+        <button class="btn btn-danger" ng-show="currentProposal.fee">Approve</button>
+        <button class="btn btn-success" ng-show="currentProposal.fee">Reject</button>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-default">Cancel</button>
-        <button ng-click="userCtrl.postDelivery(userCtrl.createDeliveryForm)" type="submit" class="btn btn-primary">Check Form</button>
-        <button ng-click="userCtrl.getPostmatesProposal()" class="btn btn-primary">Get proposal</button>
+        <button ng-click="userCtrl.postDelivery(userCtrl.createDeliveryForm)" type="submit" class="btn btn-primary">Save Delivery</button>
+        <button ng-click="userCtrl.getPostmatesProposal(userCtrl.createDeliveryForm)" class="btn btn-primary">Get proposal</button>
 
       </div>
     </div>

@@ -2,22 +2,20 @@
 
 (function postmatesFactoryIIFE(angular) {
 
-  var postmatesFactory = function($http, $rootScope, $location, $httpParamSerializer, authFactory, deliveriesFactory) {
+  var postmatesFactory = function($http, $rootScope, $location, $httpParamSerializer, authFactory) {
 
     var factory = {};
 
-    factory.currentProposal = {};
-
-    factory.getProposal = function() {
+    factory.getProposal = function(formData) {
       var url = 'http://localhost:3000/postmates/getProposal';
-      var currentDelivery = authFactory.currentUser.deliveries[authFactory.currentUser.deliveries.length - 1];
+      var currentDelivery = formData;
       var locationA = currentDelivery.locationA;
       var locationB = currentDelivery.locationB;
       var data = {
         userid: authFactory.currentUser._id,
         deliveryid: currentDelivery._id,
-        pickup: locationA[0].street + ', ' + locationA[0].city + ', ' + locationA[0].state + ' ' + locationA[0].zipCode,
-        dropoff: locationB[0].street + ', ' + locationB[0].city + ', ' + locationB[0].state + ' ' + locationB[0].zipCode
+        pickup: locationA.street + ', ' + locationA.city + ', ' + locationA.state + ' ' + locationA.zipCode,
+        dropoff: locationB.street + ', ' + locationB.city + ', ' + locationB.state + ' ' + locationB.zipCode
       };
       $http.put(url, data)
         .success(function(data) {
@@ -25,7 +23,7 @@
           $rootScope.currentProposal = data;
         })
         .error(function(data) {
-
+          console.log(data);
         });
     };
 

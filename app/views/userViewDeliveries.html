@@ -1,18 +1,84 @@
 <div ng-include src="'views/user.html'"></div>
 
-<div class="myDeliveriesDiv">
-    <h1>My Deliveries</h1>
-
-    <div ng-repeat="delivery in currentUser.deliveries">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h2 class="panel-title">{{delivery.status}}</h2>
-      </div>
-      <h3>{{delivery.description}}</h3>
-      <p>FROM : {{delivery.locationA}}</p>
-      <p>TO : {{delivery.locationB}}</p>
-    </div>
-    </div>
+<div class="page-header">
+  <h1>My Deliveries</h1>
 </div>
+<div ng-repeat="delivery in currentUser.deliveries">
+
+    <div class="row text-center">
+  <div class="page-header"><h2>{{delivery.status}}</h2></div>
+    <div class="col-md-12" style="margin-top: 20px;">
+        <div class="pricing-table col-sm-6">
+            <div class="panel panel-primary" style="border: none;">
+                <div class="controle-header panel-heading panel-heading-landing">
+                    <h1 class="panel-title panel-title-landing">
+                        Location A
+                    </h1>
+                </div>
+
+                <div class="panel-body panel-body-landing">
+                    <table class="table">
+                        <tr>
+                            <td width="50px"><i class="fa fa-check"></i></td>
+                            <td>{{delivery.locationA[0].street}}</td>
+                        </tr>
+                        <tr>
+                            <td width="50px"><i class="fa fa-check"></i></td>
+                            <td>{{delivery.locationA[0].city}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="pricing-table col-sm-6">
+          <div class="panel panel-primary" style="border: none;">
+              <div class="controle-header panel-heading panel-heading-landing">
+                  <h1 class="panel-title panel-title-landing">
+                      Location B
+                  </h1>
+              </div>
+
+              <div class="panel-body panel-body-landing">
+                  <table class="table">
+                      <tr>
+                          <td width="50px"><i class="fa fa-check"></i></td>
+                          <td>{{delivery.locationB[0].street}}</td>
+                      </tr>
+                      <tr>
+                          <td width="50px"><i class="fa fa-check"></i></td>
+                          <td>{{delivery.locationB[0].city}}</td>
+                      </tr>
+
+                  </table>
+              </div>
+          </div>
+      </div>
+      <div class="pricing-table col-sm-12">
+          <div class="panel panel-primary" style="border: none;">
+              <div class="controle-header panel-heading panel-heading-landing">
+                  <h1 class="panel-title panel-title-landing">
+                      Description
+                  </h1>
+              </div>
+              <div class="panel-body panel-body-landing">
+                  <table class="table">
+                      <tr>
+                          <td width="50px"><i class="fa fa-check"></i></td>
+                          <td>{{delivery.description}}</td>
+                      </tr>
+
+                  </table>
+              </div>
+
+          </div>
+      </div>
+    </div>
+
+</div>
+
+
+</div>
+
 
 
