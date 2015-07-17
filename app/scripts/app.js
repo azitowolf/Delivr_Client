@@ -46,6 +46,11 @@ angular
         controller: 'UserCtrl',
         controllerAs: 'userCtrl'
       })
+      .when('/userAddCard', {
+        templateUrl: 'views/userAddCard.html',
+        controller: 'UserCtrl',
+        controllerAs: 'userCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
