@@ -6,6 +6,7 @@
     var factory = {};
 
     factory.deliveries = {};
+    factory.workingDelivery = {};
 
     factory.index = function() {
       var url = 'http://localhost:3000/deliveries/api';
@@ -27,6 +28,7 @@
       })
         .success(function(data) {
           console.log(data);
+
           // authFactory.confirmLogin();
         })
         .error(function(data, err) {

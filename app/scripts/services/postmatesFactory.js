@@ -5,21 +5,16 @@
   var postmatesFactory = function($http, $rootScope, $location, $httpParamSerializer, authFactory) {
     var factory = {};
 
-    factory.deliveries = {};
-
-    factory.getApiKeys = function() {
-      var url = 'http://localhost:3000/auth/';
-      $http.get(url).
-      success(function(data) {
-        console.log(data);
-      });
-    };
-
     factory.getProposal = function() {
       var url = 'http://localhost:3000/postmates/getProposal';
+      var currentDelivery = authFactory.currentUser.deliveries[authFactory.currentUser.deliveries.length - 1];
+      var locationA = currentDelivery.locationA;
+      var locationB = currentDelivery.locationB;
       var data = {
         userid: authFactory.currentUser._id,
-        deliveryid: authFactory.currentUser.deliveries[authFactory.currentUser.deliveries.length - 1]._id
+        deliveryid: currentDelivery._id,
+        pickup: locationA[0].street + ', ' + locationA[0].city + ', ' + locationA[0].state,
+        dropoff: locationB[0].street + ', ' + locationB[0].city + ', ' + locationB[0].state
       };
       $http.put(url, data)
         .success(function(data) {
