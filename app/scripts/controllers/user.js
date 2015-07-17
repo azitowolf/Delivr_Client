@@ -29,6 +29,7 @@
     this.getDeliveries = deliveriesFactory.index;
     this.deliveries = deliveriesFactory.deliveries;
     this.getPostmatesProposal = postmatesFactory.getProposal;
+    this.currentProposal = postmatesFactory.currentProposal;
 
   };
 

@@ -5,27 +5,12 @@
   var deliveriesFactory = function($http, $rootScope, $location, authFactory) {
     var factory = {};
 
-    factory.deliveries = {};
-    factory.workingDelivery = {};
-
-    factory.index = function() {
-      var url = 'http://localhost:3000/deliveries/api';
-      $http.get(url).
-      success(function(data) {
-        factory.deliveries = data;
-      }).
-      error(function(data, err) {
-        console.log(data);
-        console.log(err);
-      });
-    };
-
     factory.addDelivery = function(formData) {
       var LoggedUserID = authFactory.currentUser._id;
       var url = 'http://localhost:3000/users/api/' + LoggedUserID;
       $http.put(url, formData)
         .success(function(data) {
-          factory.workingDelivery = data.deliveries[data.deliveries.length];
+          authFactory.confirmLogin();
         })
         .error(function(data, err) {
           console.error(data);

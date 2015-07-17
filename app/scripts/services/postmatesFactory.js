@@ -6,10 +6,11 @@
 
     var factory = {};
 
+    factory.currentProposal = {};
+
     factory.getProposal = function() {
       var url = 'http://localhost:3000/postmates/getProposal';
-      var currentDelivery = deliveriesFactory.workingDelivery;
-      debugger
+      var currentDelivery = authFactory.currentUser.deliveries[authFactory.currentUser.deliveries.length - 1];
       var locationA = currentDelivery.locationA;
       var locationB = currentDelivery.locationB;
       var data = {
@@ -21,11 +22,13 @@
       $http.put(url, data)
         .success(function(data) {
           console.log(data);
+          $rootScope.currentProposal = data;
         })
         .error(function(data) {
 
         });
     };
+
 
     return factory;
   };

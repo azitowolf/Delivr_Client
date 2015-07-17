@@ -99,8 +99,10 @@
 </form>
 
 <button ng-click="userCtrl.getPostmatesProposal()">Get proposal</button>
+<p>Price : {{currentProposal.fee}}</p>
+<p>Duration: {{currentProposal.duration}}</p>
+<button ng-show="currentProposal">Approve</button>
+<button ng-show="currentProposal">Reject</button>
 
-<!-- <button ng-click="userCtrl.addDelivery(55a542bdaa627afa56cf501d,currentUser._id)">Add Delivery</button> -->
-
-  </div>
+</div>
 
