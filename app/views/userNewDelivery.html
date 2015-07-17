@@ -90,19 +90,25 @@
 
   <div class="form-group">
     <div class="col-sm-12">
-      <div class="pull-right">
+      <div ng-show="currentProposal" class="alert alert-success text-center" role="alert">
+        <p>Price : {{currentProposal.fee}}</p>
+        <p>Duration: {{currentProposal.duration}}</p>
+        <button class="btn btn-danger" ng-show="currentProposal">Approve</button>
+        <button class="btn btn-success" ng-show="currentProposal">Reject</button>
+      </div>
+      <div class="text-center">
         <button type="submit" class="btn btn-default">Cancel</button>
-        <button ng-click="userCtrl.postDelivery(userCtrl.createDeliveryForm)" type="submit" class="btn btn-primary">Post</button>
+        <button ng-click="userCtrl.postDelivery(userCtrl.createDeliveryForm)" type="submit" class="btn btn-primary">Check Form</button>
+        <button ng-click="userCtrl.getPostmatesProposal()" class="btn btn-primary">Get proposal</button>
+
       </div>
     </div>
   </div>
 </form>
 
-<button ng-click="userCtrl.getPostmatesProposal()">Get proposal</button>
-<p>Price : {{currentProposal.fee}}</p>
-<p>Duration: {{currentProposal.duration}}</p>
-<button ng-show="currentProposal">Approve</button>
-<button ng-show="currentProposal">Reject</button>
+
+
+
 
 </div>
 

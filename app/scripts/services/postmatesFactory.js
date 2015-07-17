@@ -16,8 +16,8 @@
       var data = {
         userid: authFactory.currentUser._id,
         deliveryid: currentDelivery._id,
-        pickup: locationA[0].street + ', ' + locationA[0].city + ', ' + locationA[0].state,
-        dropoff: locationB[0].street + ', ' + locationB[0].city + ', ' + locationB[0].state
+        pickup: locationA[0].street + ', ' + locationA[0].city + ', ' + locationA[0].state + ' ' + locationA[0].zipCode,
+        dropoff: locationB[0].street + ', ' + locationB[0].city + ', ' + locationB[0].state + ' ' + locationB[0].zipCode
       };
       $http.put(url, data)
         .success(function(data) {

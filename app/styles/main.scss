@@ -17,6 +17,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 }
 
+/* Custom Font */
 body {
   padding: 0;
   font-family: 'Quattrocento Sans', sans-serif;
@@ -32,14 +33,10 @@ body {
 
 /* Custom page header */
 .header {
-
 margin-bottom:0px;
-
 }
 
 /* Custom page footer */
-
-
 .container-narrow > hr {
   margin: 30px 0;
 }
@@ -55,13 +52,9 @@ margin-bottom:0px;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-
-  p + h4 {
-    margin-top: 28px;
-  }
+/* View Deliveries */
+.deliveriesDiv{
+  -webkit-transition:1s ease-in-out;
 }
 
 /* Responsive: Portrait tablets and up */
