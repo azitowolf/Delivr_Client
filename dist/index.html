@@ -1,0 +1,43 @@
+<!doctype html> <html class="no-js"> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/main.f8b05656.css"> <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"> <script src="bower_components/jquery/dist/jquery.js"></script> <script type="text/javascript" src="https://js.stripe.com/v2/"></script> <script type="text/javascript">// This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_4cwLM2EukepBtP2SGrNjqFF2');
+
+  jQuery(function($) {
+  $('#payment-form').submit(function(event) {
+    var $form = $(this);
+
+    // Disable the submit button to prevent repeated clicks
+    $form.find('button').prop('disabled', true);
+
+    Stripe.card.createToken($form, stripeResponseHandler);
+
+    // Prevent the form from submitting with the default action
+    return false;
+
+function stripeResponseHandler(status, response) {
+  var $form = $('#payment-form');
+
+  if (response.error) {
+    // Show the errors on the form
+    $form.find('.payment-errors').text(response.error.message);
+    $form.find('button').prop('disabled', false);
+  } else {
+    // response contains id and card, which contains additional card details
+    var token = response.id;
+    // Insert the token into the form so it gets submitted to the server
+    $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+    // and submit
+    $form.get(0).submit();
+  }
+};
+  });
+});</script>  <body ng-app="clientApp"> <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <!-- Add your site or application content here --> <div class="header"> <div class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> </div> <div class="collapse navbar-collapse" id="js-navbar-collapse"> <ul class="nav navbar-nav" ng-controller="NavbarCtrl as navCtrl"> <li ng-class="{active: navCtrl.isActive('/')}"><a href="#/">Home</a></li> <li ng-show="!currentUser" ng-class="{active: navCtrl.isActive('/login')}"><a ng-href="#/login">Login</a></li> <li ng-show="!currentUser" ng-class="{active: navCtrl.isActive('/register')}"><a ng-href="#/register">Register</a></li> <li ng-show="currentUser"><a ng-href="#/register" ng-click="navCtrl.logout()">Logout</a></li> <li ng-show="currentUser"><a href="#/user"> Logged in as : {{currentUser.username}}</a></li> </ul> </div> </div> </div> </div> <div class="container appContent"> <div ng-view=""></div> </div> <div class="footer"> <div class="container"> <p><span class="glyphicon glyphicon-heart"></span> Alex Zito-Wolf in Boston </p> <a ng-href="#/">Contact</a> </div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <!--      <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script> --> <script src="scripts/vendor.7b9c6345.js"></script> <script src="scripts/scripts.e929b2fa.js"></script>  
