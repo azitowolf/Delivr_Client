@@ -1,6 +1,6 @@
 'use strict';
 
-(function loginControllerIIFE(ang) {
+(function loginControllerIIFE(angular) {
 
   var LoginCtrl = function($http, $routeParams, $location, $rootScope, authFactory) {
     this.loginForm = {};

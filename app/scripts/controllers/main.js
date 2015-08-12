@@ -3,7 +3,6 @@
 (function mainControllerIFFE(ang) {
   var MainCtrl = function($rootScope) {
 
-
     ///
 
   };

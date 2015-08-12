@@ -9,6 +9,7 @@
     this.registerForm.firstName = '';
     this.registerForm.lastName = '';
     this.registerForm.phoneNumber = '';
+    this.registerForm.stripeID = '';
 
     this.register = authFactory.register;
 

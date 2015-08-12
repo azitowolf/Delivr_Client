@@ -93,18 +93,16 @@
 
   <div class="form-group">
     <div class="col-sm-12">
-      <div ng-show="currentProposal" ng-class="{'currentProposal.fee' : 'alert-success'}" class="alert text-center" role="alert">
+      <div ng-show="currentProposal"  class="alert text-center" role="alert">
         <p ng-hide="currentProposal.fee">NOT AVAILABLE</p>
         <p ng-hide="currentProposal.fee">{{currentProposal.message}}</p>
         <p>Price : {{currentProposal.fee /100 | currency}}</p>
         <p>Duration: {{currentProposal.duration}}</p>
-        <button class="btn btn-danger" ng-show="currentProposal.fee">Approve</button>
-        <button class="btn btn-success" ng-show="currentProposal.fee">Reject</button>
+        <button class="btn btn-success" ng-show="currentProposal.fee" ng-click="userCtrl.postDelivery(userCtrl.createDeliveryForm)" ng-href="#/userViewDeliveries">Approve</button>
+        <button class="btn btn-danger" ng-show="currentProposal.fee">Reject</button>
       </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-default">Cancel</button>
-        <button ng-click="userCtrl.postDelivery(userCtrl.createDeliveryForm)" type="submit" class="btn btn-primary">Save Delivery</button>
-        <button ng-click="userCtrl.getPostmatesProposal(userCtrl.createDeliveryForm)" class="btn btn-primary">Get proposal</button>
+        <button ng-click="userCtrl.getPostmatesProposal(userCtrl.createDeliveryForm)" class="btn btn-primary btn-large">Get proposal</button>
 
       </div>
     </div>

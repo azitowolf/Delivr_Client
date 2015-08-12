@@ -1,12 +1,10 @@
-# client
+# Delivr Client
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+##Delivr is a client for the postmates app.
+###Simply put the application allows you to specify a couple locations and have a courier from postmates come and pick the item up for you
 
-## Build & development
+##Specs
+###Delivr is A MEAN stack app. MongoDB, Express.js, Angular.js, and Node.js
 
-Run `grunt` for building and `grunt serve` for preview.
+##Server Repo - https://github.com/azitowolf/Delivr_Server
 
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
